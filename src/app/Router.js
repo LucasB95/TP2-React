@@ -5,6 +5,8 @@ import {Character,HomePage} from '../pages';
 import  {PaginaError} from './PaginaError'
 
 
+
+
 export const Router = () =>{
     const [onepiece,setOnePiece] = React.useState("");
 
@@ -17,12 +19,11 @@ export const Router = () =>{
     return(
         <BrowserRouter>
       <Switch>
-  
-      <Route path="/info">
-          <Character  onepiece = {onepiece} />
-        </Route>
         <Route path="/home">
           <HomePage setOnePiece={handleSetOnePiece}/>
+        </Route>  
+      <Route path="/info">
+          <Character  onepiece = {onepiece} />
         </Route>
         <Route path="/">
         <PaginaError/>
@@ -33,10 +34,3 @@ export const Router = () =>{
     )
 }
 
-// const hola = styled.div`
-// flex-direction: column;
-// justify-content: center;
-// align-items: center;
-// background-image : url('https://wallpapercave.com/wp/wp8300034.jpg')
-
-// `

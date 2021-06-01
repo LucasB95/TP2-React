@@ -1,20 +1,30 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import {OnePieceLogoUrl} from './constants';
-//import {SearchBar} from './SearchBar'; 
+//import {OnePieceLogoUrl} from './constants';
+import background from '../../img/background.jpg';
+import logo from '../../img/logo.png';
+
 
 
 export const HomePage = ({setOnePiece}) =>{
   
     const [input, setInput] = React.useState();
-    const history = useHistory();
+    const history = useHistory("/home");
 
     function handleSearchClick(){
-      setOnePiece(input);
+        setOnePiece(input);
         //setOnePiece(input.toLowerCase());
         history.replace("/info");
     }
+    // function handleSearchClickEnter(onKeyPress){
+    //   if(onKeyPress === 13){
+    //     console.log(onKeyPress);
+    //     setOnePiece(input);
+    //     //setOnePiece(input.toLowerCase());
+    //     history.replace("/info");
+    //   }
+    // }
 
     function handleInputChange(event){
       setInput(event.target.value);
@@ -29,7 +39,7 @@ export const HomePage = ({setOnePiece}) =>{
     return(
         <Home>                       
         <Wrapper>        
-          <OnePieceLogo src={OnePieceLogoUrl} alt="logo One Piece"/>
+          <OnePieceLogo src={logo} alt="logo One Piece"/>
           <Search
           placeholder= "Buscar el personaje"
           value={input}
@@ -48,11 +58,15 @@ export const HomePage = ({setOnePiece}) =>{
 const Home = styled.div`
 width:100vw;
 height:100vh;
+border: none;
+border-radius: 6px;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-image : url('https://wallpapercave.com/wp/wp8300034.jpg')
+text-align: center;
+background-Image: url(${background});
+//background-image : url('https://wallpapercave.com/wp/wp8300034.jpg')
 `
 const Wrapper = styled.div`
 width:50%;
@@ -62,11 +76,13 @@ justify-content: center;
 `
 const OnePieceLogo = styled.img`
 width:100%;
-padding-bottom: 20px;
-border-radius: 6px;
-width:500px;
+padding-bottom: 5px;
+display: flex;
+flex-direction: column;
 justify-content: center;
-border: 'none',
+align-items: center;
+text-align: center;
+
 `
 
 const Search = styled.input`

@@ -1,6 +1,7 @@
 *{
   box-sizing: border-box;
   margin: 0;
+
 }
 
 body {
@@ -17,9 +18,35 @@ code {
     monospace;
 }
 
-#character{
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image : url('https://wallpapercave.com/wp/wp8300034.jpg')  
+h1{
+  font-family: cursive;
+  font-style: italic;
+  color:red;
+  text-shadow: 2px 2px 1px black;
+  /*text-decoration: underline black;*/
 }
+
+h2{
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  text-shadow: 2px 2px 1px black;
+}
+p{
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  text-shadow: 2px 2px 1px black;
+  font-size: 23px;
+}
+
+button {
+  cursor: pointer;
+  color: yellow;
+  padding: 10px; 
+  font-weight : 700;
+  background-color:red;
+  border: none;
+  border-radius: 6px;
+  transition: all ease-out 0.3;  
+
+  }
+

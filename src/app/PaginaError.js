@@ -1,5 +1,7 @@
 import React from 'react';
 import{Link} from 'react-router-dom';
+import styled from 'styled-components';
+import background from '../img/background.jpg';
 
 
 export const PaginaError = () => {
@@ -12,25 +14,30 @@ export const PaginaError = () => {
    ]
    
    var randomGif = errorGif[Math.floor(Math.random()*errorGif.length)];
-   console.log(randomGif);
-//const error404 = () => {
-   return (
 
+   return (
+           <Error>
        <div className="col-12 text-center m-8">
            <div>
                <img src={randomGif} alt="Error"/>
                <h1>Lo sentimos</h1>
                <p>La pagina solicitada no se encuentra</p>
-               <Link to="/">Clickea para volver al Inicio</Link>
-           </div>
-   
-   
+               <button><Link to="/home">Clickea para volver al Inicio</Link></button>
+           </div>  
        </div>
+       </Error>
    );
-   
-   
-  // };
 
- //export  default PaginaError;
 }
 
+const Error = styled.div`
+color: white;
+width:100vw;
+height:100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-Image: url(${background});
+//background-image : url('https://wallpapercave.com/wp/wp8300034.jpg')
+`

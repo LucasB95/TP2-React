@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from "react-router";
 import  {PaginaError} from '../../app/PaginaError'
-// import styled from 'styled-components';
+import styled from 'styled-components';
+import background from '../../img/background.jpg';
 
 
 export const Character = ({onepiece}) =>{
@@ -20,22 +21,38 @@ export const Character = ({onepiece}) =>{
 
 
      console.log(onepieceData);
+  
+     if(onepieceData) {
+         if(onepieceData.detail === "No encontrado."){
+                return (
+                    <Notfound>
+                    
+                    <button onClick={() => history.push("./home")}>Volver a Home</button>
+                    <h1>"No se encuentra ese personaje en la base de datos"</h1>;
+                    
+                   <PaginaError/>                
+                   
+                    </Notfound>                   
+                );
+          }
+        
+       }
      
  
      if (status === "id") {
         return (
-        <>
-         
-            <button onClick={() => history.push("./home")}>Volver a la Home</button>
+        
+          <Pirate>
+            <button onClick={() => history.push("./home")}>Volver a Home</button>
             { onepieceData &&(                 
-                
-                <div>
+                            
+                     <div>
                         <div> 
                             <img src={onepieceData.image} alt="Imagen del personaje" /> 
                      
                   </div>
-                    <div  >
-                        <h1>{onepieceData.name}</h1>            
+                    <div>                    
+                    <h1>{onepieceData.name}</h1>            
                     <h2>Edad : {onepieceData.age}</h2>
                     <h2>Genero : {onepieceData.gender} </h2>
                     <h2>Recompensa : {onepieceData.reward}</h2>
@@ -51,33 +68,50 @@ export const Character = ({onepiece}) =>{
 
                        </div>   
                     )}
-       
-          </>    
+       </Pirate>
+             
         );
       } else if (status === "loading") {
         return "Cargando...";
-      }else if (status === "error") {
+      }else if (status === "error" ) { 
         return (
+            <Notfound>
+          
+            <button onClick={() => history.push("./home")}>Volver a Home</button>
+            <h1>"No se encuentra ese personaje en la base de datos"</h1>;
             
-          <>
-            <button onClick={() => history.push("./home")}>Volver a la Home</button>
-            <div>"No se encuentra ese personaje en la base de datos"</div>
-            
-            <PaginaError/>
-           
-          </>
-        
+            <PaginaError/>          
+        </Notfound>
         );
       } 
+
+                   
     };
 
+    const Pirate = styled.div`
+    color: lime;
+    
+    width:100vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-Image: url(${background});
+    //background-image : url('https://wallpapercave.com/wp/wp8300034.jpg')
+    `
 
-    // const diseño = styled.div`
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    // color: red;
-    // background-color: red;
-    // `
+    const Notfound = styled.div`
+    width:100vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: skyblue;
 
+`;
+
+    
