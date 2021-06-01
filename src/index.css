@@ -16,3 +16,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#character{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image : url('https://wallpapercave.com/wp/wp8300034.jpg')  
+}
