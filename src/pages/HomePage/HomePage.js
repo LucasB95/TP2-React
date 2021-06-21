@@ -8,12 +8,12 @@ import logo from '../../img/logo.png';
 
 
 export const HomePage = ({setOnePiece}) =>{
-  
     const [input, setInput] = React.useState();
     const history = useHistory("/home");
 
     function handleSearchClick(){
         setOnePiece(input);
+        // Borrar código comentado
         //setOnePiece(input.toLowerCase());
         history.replace("/info");
     }
@@ -25,12 +25,13 @@ export const HomePage = ({setOnePiece}) =>{
     //     history.replace("/info");
     //   }
     // }
+    // Borrar código comentado
 
     function handleInputChange(event){
       setInput(event.target.value);
     }
 
-    function handleSearchClickAzar(){
+    function handleSearchClickAzar() {
       const random = Math.floor(Math.random()*35);
       setOnePiece(random);
       history.replace("/info");
