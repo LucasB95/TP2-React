@@ -1,46 +1,35 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
-//import {OnePieceLogoUrl} from './constants';
-import background from '../../img/background.jpg';
-import logo from '../../img/logo.png';
+import background from '../../img/back2.jpg';
+import logo from '../../img/logoFuturama.png';
 
 
 
-export const HomePage = ({setOnePiece}) =>{
+export const HomePage = ({setFuturama}) =>{
+  
     const [input, setInput] = React.useState();
     const history = useHistory("/home");
 
     function handleSearchClick(){
-        setOnePiece(input);
-        // Borrar código comentado
-        //setOnePiece(input.toLowerCase());
+        setFuturama(input);
         history.replace("/info");
     }
-    // function handleSearchClickEnter(onKeyPress){
-    //   if(onKeyPress === 13){
-    //     console.log(onKeyPress);
-    //     setOnePiece(input);
-    //     //setOnePiece(input.toLowerCase());
-    //     history.replace("/info");
-    //   }
-    // }
-    // Borrar código comentado
-
+    
     function handleInputChange(event){
       setInput(event.target.value);
     }
 
-    function handleSearchClickAzar() {
+    function handleSearchClickAzar(){
       const random = Math.floor(Math.random()*35);
-      setOnePiece(random);
+      setFuturama(random);
       history.replace("/info");
     }
 
     return(
         <Home>                       
         <Wrapper>        
-          <OnePieceLogo src={logo} alt="logo One Piece"/>
+          <FuturamaLogo src={logo} alt="Logo Futurama"/>
           <Search
           placeholder= "Buscar el personaje"
           value={input}
@@ -75,7 +64,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 `
-const OnePieceLogo = styled.img`
+const FuturamaLogo = styled.img`
 width:100%;
 padding-bottom: 5px;
 display: flex;

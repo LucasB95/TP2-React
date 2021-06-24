@@ -4,29 +4,33 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import {Character,HomePage} from '../pages';
 import  {PaginaError} from './PaginaError'
 
+
+
+
 export const Router = () =>{
-    const [onepiece,setOnePiece] = React.useState("");
+    const [futurama,setFuturama] = React.useState("");
 
-    console.log(onepiece); // Borrar log
+    console.log(futurama);
 
-    function handleSetOnePiece(onepiece){
-        setOnePiece(onepiece);
+    function handleSetfuturama(futurama){
+        setFuturama(futurama);
     }
 
     return(
-      <BrowserRouter>
-        <Switch>
-          <Route path="/info">
-            <Character  onepiece={onepiece} />
-          </Route>
-          <Route path="/error">
-            <PaginaError/>
-          </Route>           
-          <Route path="/">
-            <HomePage setOnePiece={handleSetOnePiece}/>
-          </Route>  
-        </Switch>  
-      </BrowserRouter>
+        <BrowserRouter>
+      <Switch>
+      <Route path="/info">
+          <Character  futurama = {futurama} />
+        </Route>
+        <Route path="/error">
+        <PaginaError/>
+        </Route>           
+        <Route path="/">
+          <HomePage setFuturama={handleSetfuturama}/>
+        </Route>  
+      </Switch>  
+    </BrowserRouter>
+
     )
 }
 

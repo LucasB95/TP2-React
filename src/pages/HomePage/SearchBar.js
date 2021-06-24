@@ -2,18 +2,18 @@ import React from 'react';
 
 export const SearchBar = ({handleSubmit}) =>{
 
-const [onepiece,setOnePiece] =  React.useState("");
-const [onepieceData,setOnePieceData] = React.useState();
+const [futurama,setfuturama] =  React.useState("");
+const [futuramaData,setfuturamaData] = React.useState();
 
 React.useEffect(() => { 
-    if(onepiece)
-    fetch(`https://apionepiece.herokuapp.com/api/character/${onepiece}`).then((response) => 
-        response.json().then((data) => setOnePieceData(data)));
-},[onepiece])
+    if(futurama)
+    fetch(`https://apifuturama.herokuapp.com/api/character/${futurama}`).then((response) => 
+        response.json().then((data) => setfuturamaData(data)));
+},[futurama])
 
 function handleSubmit(event){
     event.preventDefault();
-    setOnePiece(event.target.onepiece.value);
+    setfuturama(event.target.futurama.value);
 }
 
 return(
@@ -21,7 +21,7 @@ return(
         <form onSubmit={handleSubmit}>
             <label>
                 <input 
-                id = "onepiece"
+                id = "futurama"
                 style={{marginBottom: '10px',padding : '10px',border: 'none',borderRadius: '6px'}} 
                 type="text"
                  />
@@ -29,8 +29,8 @@ return(
             <button>Buscar</button>
         </form>
 
-        {onepieceData &&(
-            <img src={onepieceData.image} alt="Imagen del personaje" />             
+        {futuramaData &&(
+            <img src={futuramaData.image} alt="Imagen del personaje" />             
         )}
 
     </div>

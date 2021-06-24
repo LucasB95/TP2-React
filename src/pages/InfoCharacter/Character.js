@@ -2,32 +2,33 @@ import React from 'react';
 import { useHistory } from "react-router";
 import  {PaginaError} from '../../app/PaginaError'
 import styled from 'styled-components';
-import background from '../../img/background.jpg';
+import background from '../../img/back2.jpg';
 
 
-export const Character = ({onepiece}) =>{
-    //const [onepiece, setOnePiece] = React.useState("11");//
-    const [onepieceData, setOnePieceData] = React.useState();
-    const [status, setStatus] = React.useState("id");
-
-    const history = useHistory();
-
-    React.useEffect(() => { 
-        setStatus("loading");
-        fetch(`https://apionepiece.herokuapp.com/api/character/${onepiece}`).then((response) => response.json().then((data) => setOnePieceData(data)))
-        .catch((error) => setStatus("error"))
-        .finally(setStatus("id"));
-    },[onepiece])
-
-
-     console.log(onepieceData);
+export const Character = ({futurama}) =>{
+  //const [futurama, setOnePiece] = React.useState("11");//
+  const [futuramaData, setfuturamaData] = React.useState();
+  const [status, setStatus] = React.useState("id");
   
-     if(onepieceData) {
-         if(onepieceData.detail === "No encontrado."){
+  const history = useHistory();
+  
+  React.useEffect(() => { 
+    setStatus("loading");
+    fetch(`https://futuramaapi.herokuapp.com/api/v2/characters?search=${futurama}`).then((response) => response.json().then((data) => setfuturamaData(data)))
+    .catch((error) => setStatus("error"))
+    .finally(setStatus("id"));
+  },[futurama])
+  
+ 
+    console.log(status);
+     console.log(futuramaData);
+  
+     if(futuramaData) {
+         if(futurama === undefined){
                 return (
                     <Notfound>
                     
-                    <button onClick={() => history.push("./home")}>Volver a Home</button>
+                    <button onClick={() => history.push("./")}>Volver a Home</button>
                     <h1>"No se encuentra ese personaje en la base de datos"</h1>;
                     
                    <PaginaError/>                
@@ -43,30 +44,26 @@ export const Character = ({onepiece}) =>{
         return (
         
           <Pirate>
-            <button onClick={() => history.push("./home")}>Volver a Home</button>
-            { onepieceData &&(                 
-                            
-                     <div>
+            <button onClick={() => history.push("./")}>Volver a Home</button>
+            { futuramaData &&(                 
+                       
+                    <div>
                         <div> 
-                            <img src={onepieceData.image} alt="Imagen del personaje" /> 
-                     
-                  </div>
-                    <div>                    
-                    <h1>{onepieceData.name}</h1>            
-                    <h2>Edad : {onepieceData.age}</h2>
-                    <h2>Genero : {onepieceData.gender} </h2>
-                    <h2>Recompensa : {onepieceData.reward}</h2>
-                    <h2>Fruta del diablo : {onepieceData.fruit_name}</h2>
-                    <h2>Tipo de Fruta : {onepieceData.fruit_type}</h2>
-                    <h2>Raza : {onepieceData.race}</h2>
-                    <h2>Rango : {onepieceData.rank}</h2>
-                    <h2>Estado : {onepieceData.status}</h2>
-                    <h2>Origen : {onepieceData.origin}</h2>
-                    <h2>Ocupacion : {onepieceData.occupation}</h2>
-                    <h2>Descripcion : {onepieceData.description}</h2>
+                            <img src={futuramaData.slice(0,1).map((elem) => elem.PicUrl )     } alt="Imagen del personaje" /> 
                         </div>
 
-                       </div>   
+                        <div>                    
+                        <h1>{futuramaData.slice(0,1).map((elem) => elem.Name)}</h1>            
+                        <h2>Edad : {futuramaData.slice(0,1).map((elem) => elem.Age)}</h2>
+                        <h2>Primera Aparición : {futuramaData.slice(0,1).map((elem) => elem.FirstAppearance)} </h2>
+                        <h2>Planeta : {futuramaData.slice(0,1).map((elem) => elem.Planet)} </h2>
+                        <h2>Profesión : {futuramaData.slice(0,1).map((elem) => elem.Profession)}</h2>
+                        <h2>Familiares : {futuramaData.slice(0,1).map((elem) => elem.Relatives)}</h2>
+                        <h2>Especie : {futuramaData.slice(0,1).map((elem) => elem.Species)}</h2>
+                        <h2>Estado : {futuramaData.slice(0,1).map((elem) => elem.Status)}</h2>
+                        <h2>Interpretado por : {futuramaData.slice(0,1).map((elem) => elem.VoicedBy)}</h2>
+                        </div>                     
+                    </div>  
                     )}
        </Pirate>
              
@@ -77,7 +74,7 @@ export const Character = ({onepiece}) =>{
         return (
             <Notfound>
           
-            <button onClick={() => history.push("./home")}>Volver a Home</button>
+            <button onClick={() => history.push("./")}>Volver a Home</button>
             <h1>"No se encuentra ese personaje en la base de datos"</h1>;
             
             <PaginaError/>          
