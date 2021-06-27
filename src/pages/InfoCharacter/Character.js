@@ -24,7 +24,7 @@ export const Character = ({futurama}) =>{
      console.log(futuramaData);
   
      if(futuramaData) {
-         if(futurama === undefined){
+         if(futuramaData === undefined || futuramaData.map((elem) => elem.length) == 0){
                 return (
                     <Notfound>
                     
